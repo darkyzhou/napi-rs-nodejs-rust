@@ -7,6 +7,8 @@ ARG RUST_TARGET_ARCH="loongarch64-unknown-linux-gnu"
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
   apt-get install -y --no-install-recommends \
+    ca-certificates \
+    curl \
     gcc-14-loongarch64-linux-gnu \
     g++-14-loongarch64-linux-gnu \
     binutils-loongarch64-linux-gnu \
@@ -18,8 +20,6 @@ RUN apt-get update && \
     libc++abi-18-dev \
     nodejs \
     npm
-
-RUN apt-get install -y --no-install-recommends ca-certificates curl
 
 RUN curl "https://static.rust-lang.org/rustup/archive/${RUSTUP_VERSION}/${RUST_ARCH}/rustup-init" -o rustup-init && \
   chmod +x rustup-init && \
